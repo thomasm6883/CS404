@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Module 1.3 - Board Game Geek</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+
+    <style>
+    img {
+      max-width: 100%;
+      height: auto;
+      width: auto\9; /* ie8 */
+    }
+    .gameSummary {
+      margin-bottom: 15px;
+      vertical-align: bottom;
+      border-style: solid;
+      border-width: 1px;
+      border-radius: 10px;
+      box-shadow: "#000000 3px 3px 6px";
+      transition: box-shadow ease-in-out 0.3s;
+      text-align: center;
+      padding: 5px;
+      cursor: pointer;
+    }
+    .gameSummary:hover {
+      box-shadow: 5px 5px 10px #808080;
+    }
+    .summaryTitle { display: block; font-size: medium; height: 2.5em; }
+    .summaryInfo { display: block; font-size: medium; height: 5em; overflow-y: auto;}
+    
+    form {
+      margin-bottom: 15px;
+      vertical-align: bottom;
+      border-style: solid;
+      border-width: 1px;
+      border-radius: 10px;
+      padding: 5px;
+    }
+    .form-group {
+      padding:3px;
+      margin-left: 10px
+    }
+    </style>
+  </head>
+  <body>
+    <div class='container'>
+      <div class='row'>
+        <div class="pb-2 mt-4 mb-2 border-bottom" style="width: 100%;">
+          <h1>Board Game Geek Collection</h1>
+          Click on a game below for more information.
+        </div>
+      </div>
+
+      <!--movie grid-->
+      <div class='row' id="gameGrid">
+        
+      </div> <!-- /row -->
+
+
+          <!-- Button trigger modal -->
+
+      <form id="addGame">
+        <h1>Enter A New Game Here</h1>
+        <div class="row">
+
+          <div class="form-group col-md-4">
+            <label for="gameId">Enter Id</label>
+            <input type="number" class="form-control" id="gameId" required>
+          </div>
+
+          <div class="form-group col-md-4">
+            <label for="gameName">Name</label>
+            <input type="text" class="form-control" id="gameName" required>
+          </div>
+
+        </div>
+
+
+
+        <div class="form-group- col-md-4">
+          <label for="gameDesc">Description</label>
+          <textarea id="gameDesc" cols="50" rows="4" required></textarea>
+        </div>
+
+
+
+        <div class="row">
+
+          <div class="form-group col-md-4">
+            <label for="gameYear">Year</label>
+            <input type="number" class="form-control" id="gameYear" required>
+          </div>
+
+          <div class="form-group col-md-4">
+            <label for="gameAge">age</label>
+            <input type="number" class="form-control" id="gameAge" required>
+          </div>
+
+        </div>
+
+
+
+        <div class="form-group col-md-4">
+          <label for="gameRated" class="form-label">Rating</label>
+          <input type="range" class="form-range" min="0" max="10" step="0.1" id="gameRated" oninput="this.nextElementSibling.value = this.value">
+          <output>5</output>
+        </div>
+
+
+
+        <div class="row">
+
+          <div class="form-group col-md-2">
+            <label for="gameMinToPlay">Minimum Players</label>
+            <input type="number" class="form-control" id="gameMinToPlay" required>
+          </div>
+
+          <div class="form-group col-md-2">
+            <label for="gameMaxToPlay">Maximum Players</label>
+            <input type="number" class="form-control" id="gameMaxToPlay" required >
+          </div>
+
+          <div class="form-group col-md-2">
+            <label for="gameMinTime">Minimum Time</label>
+            <input type="number" class="form-control" id="gameMinTime" required>
+          </div>
+
+          <div class="form-group col-md-2">
+            <label for="gameMaxTime">Maximum Time</label>
+            <input type="number" class="form-control" id="gameMaxTime" required>
+          </div>
+
+        </div>
+
+
+
+        <div class="form-group col-md-4">
+          <label for="gameWeight" class="form-label">Weight</label>
+          <input type="range" class="form-range" min="0" max="5" step="0.01" id="gameWeight" oninput="this.nextElementSibling.value = this.value">
+          <output>2.5</output>
+        </div>
+
+
+
+        <div class="row">
+
+          <div class="form-group col-md-4">
+            <label for="gameDesigners">Designers</label>
+            <input type="text" class="form-control" id="gameDesigners" required>
+          </div>
+
+          <div class="form-group col-md-4">
+            <label for="gameArtists">Artists</label>
+            <input type="text" class="form-control" id="gameArtists" required>
+          </div>
+
+        </div>
+
+
+
+        <div class="row">
+
+          <div class="form-group col-md-4">
+            <label for="gamePublishers">Publishers</label>
+            <input type="text" class="form-control" id="gamePublishers" required>
+          </div>
+
+          <div class="form-group col-md-4">
+            <label for="gameUrl">Image URL</label>
+            <input type="text" class="form-control" id="gameUrl" required>
+          </div>
+
+        </div>
+
+
+        <input type="submit" value="Submit" class="btn btn-primary">
+
+      </form>
+    </div> <!-- /container -->
+    
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header" id="modalHeader">
+            
+          </div>
+          <div class="modal-body" id="modalBody">
+            
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS (with popper integerated) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="bggBrowse.js" type="module"></script>
+  </body>
+</html>
